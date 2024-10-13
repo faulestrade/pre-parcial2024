@@ -46,7 +46,7 @@ const Home = () => {
           ))}
         </div>
       ) : (
-        <div className="home-no-games"> No hay juegos</div>
+        <div className="home-no-games">No hay juegos para mostrar</div>
       )}
     </div>
   );
