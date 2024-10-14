@@ -1,17 +1,17 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./Views/Home/Home";
-import Details from "./Views/Details/Details";
-import AddGame from "./Views/AddGame/AddGame";
+import React, { useState } from "react";
+import Modal from "./Components/Modal/Modal";
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/details/:id" element={<Details />} />
-        <Route path="/addGame" element={<AddGame />} />
-      </Routes>
-    </BrowserRouter>
+    <div>
+      <button onClick={openModal}>Abrir</button>
+      {isModalOpen && <Modal onClose={closeModal} />}
+    </div>
   );
 }
 

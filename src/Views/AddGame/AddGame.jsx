@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
-const AddGame = () => {
+const AddGame = ({ onClose }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [categories, setCategories] = useState("");
   const [players, setPlayers] = useState("");
-  const navigate = useNavigate();
   const buttonIsDisabled = !title || !description || !players || !categories;
 
   const handleAddGame = async () => {
@@ -18,9 +16,8 @@ const AddGame = () => {
       },
       body: JSON.stringify({ title, description, players, categories }),
     });
-
     if (response.ok) {
-      navigate("/");
+      onClose();
     }
   };
 
